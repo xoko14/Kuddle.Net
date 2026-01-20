@@ -55,8 +55,41 @@ internal static class KdlValueConverter
             return kdlValue.TryGetTimeOnly(out var to1) && (value = to1) is not null;
         if (underlying == typeof(TimeSpan))
             return kdlValue.TryGetTimeSpan(out var ts) && (value = ts) is not null;
+        
+        //4. AST
+        if (underlying == typeof(KdlValue))
+        {
+            value = kdlValue;
+            return true;
+        }
+
+        if (underlying == typeof(object))
+            return TryObjectFromKdl(kdlValue, out var obj) && (value = obj) is not null;
 
         return false;
+    }
+
+    private static bool TryObjectFromKdl(KdlValue kdlValue, out object? value)
+    {
+        value = null;
+        var clrType = CharacterSets.GetClrType(kdlValue.TypeAnnotation);
+
+        if (clrType is not null)
+        {
+            return TryFromKdl(kdlValue, clrType, out var outValue) && (value = outValue) is not null;
+        }
+
+        return kdlValue switch
+        {
+            KdlBool kdlBool => kdlBool.TryGetBool(out var b) && (value = b) is not null,
+            KdlNull => (value = null) is null,
+            KdlNumber kdlNumber => kdlNumber.TryGetInt(out var i) && (value = i) is not null
+                                   || kdlNumber.TryGetLong(out var l) && (value = l) is not null
+                                   || kdlNumber.TryGetDecimal(out var d) && (value = d) is not null
+                                   || kdlNumber.TryGetDouble(out var dou) && (value = dou) is not null,
+            KdlString kdlString => kdlString.TryGetString(out var st) && (value = st) is not null,
+            _ => false,
+        };
     }
 
     public static bool TryToKdl(object? input, out KdlValue kdlValue, string? typeAnnotation = null)
@@ -89,6 +122,7 @@ internal static class KdlValueConverter
             TimeOnly t => KdlValue.From(t),
             TimeSpan ts => KdlValue.From(ts),
             Enum e => KdlValue.From(e),
+            KdlValue kv => kv,
             _ => null!,
         };
 

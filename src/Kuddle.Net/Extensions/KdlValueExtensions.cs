@@ -52,6 +52,7 @@ public static class KdlValueExtensions
 
         public bool TryGetTimeSpan(out TimeSpan res) =>
             TimeSpan.TryParse((value as KdlString)?.Value, out res);
+
     }
 
     private static bool TryConvert<T>(KdlValue val, Func<KdlNumber, T> converter, out T result)
