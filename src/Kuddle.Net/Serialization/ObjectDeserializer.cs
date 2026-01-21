@@ -307,8 +307,10 @@ internal class ObjectDeserializer
             {
                 if (!consumedPropKeys.Contains(prop.Key.Value))
                 {
+                    // Get dictionary value type
+                    var valueType = extDict!.GetType().GenericTypeArguments[1];
                     // Convert to native CLR type (string, double, bool) so Assertions pass
-                    KdlValueConverter.TryFromKdl(prop.Value, typeof(object), out var nativeVal);
+                    KdlValueConverter.TryFromKdl(prop.Value, valueType, out var nativeVal);
                     extDict![prop.Key.Value] = nativeVal;
                 }
             }
