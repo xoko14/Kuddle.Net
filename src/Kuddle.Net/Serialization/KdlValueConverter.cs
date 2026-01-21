@@ -55,6 +55,14 @@ internal static class KdlValueConverter
             return kdlValue.TryGetTimeOnly(out var to1) && (value = to1) is not null;
         if (underlying == typeof(TimeSpan))
             return kdlValue.TryGetTimeSpan(out var ts) && (value = ts) is not null;
+        
+        //4. AST
+        if (underlying == typeof(KdlValue))
+        {
+            value = kdlValue;
+            return true;
+        }
+
 
         return false;
     }
@@ -89,6 +97,7 @@ internal static class KdlValueConverter
             TimeOnly t => KdlValue.From(t),
             TimeSpan ts => KdlValue.From(ts),
             Enum e => KdlValue.From(e),
+            KdlValue kv => kv,
             _ => null!,
         };
 
