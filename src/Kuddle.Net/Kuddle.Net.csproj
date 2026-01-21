@@ -7,6 +7,7 @@
     <Description>Kuddle.Net is a .NET implementation of a KDL parser/serializer targeting v2 of the spec. KDL is concise, human-readable language built for configuration and data exchange.</Description>
     <PackageTags>kdl;parser;serializer</PackageTags>
     <PackageReleaseNotes>Initial release of Kuddle.Net KDL parser/serializer.</PackageReleaseNotes>
+    <TargetFrameworks>net10;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Parlot" Version="1.5.6" />
