@@ -30,7 +30,11 @@ jobs:
           echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
       
       #Build/pack the project
-      - name: Setup .NET
+      - name: Setup .NET 1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 1.x
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 10.x
