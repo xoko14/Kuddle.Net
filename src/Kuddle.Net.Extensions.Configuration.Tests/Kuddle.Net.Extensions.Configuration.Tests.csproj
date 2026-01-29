@@ -9,7 +9,4 @@
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.3.2" />
     <PackageReference Include="TUnit" Version="1.11.16" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kuddle.Net.Extensions.Configuration\Kuddle.Net.Extensions.Configuration.csproj" />
-  </ItemGroup>
 </Project>
