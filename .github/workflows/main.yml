@@ -37,7 +37,7 @@ jobs:
             10.x
           global-json-file: global.json
       - name: Build and Pack NuGet package
-        run: dotnet pack src/Kuddle.Net/Kuddle.Net.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
+        run: dotnet build src/Kuddle.Net/Kuddle.Net.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
       - name: Upload NuGet package to GitHub
         uses: actions/upload-artifact@v4
         with:
