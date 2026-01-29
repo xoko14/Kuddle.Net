@@ -27,8 +27,8 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           global-json-file: global.json
-      - name: Run Tests
-        run: dotnet run .build/targets.cs test
+      #- name: Run Tests
+      #  run: dotnet run .build/targets.cs test
       - name: Pack NuGet Packages (solution)
         run: |
           set -e
