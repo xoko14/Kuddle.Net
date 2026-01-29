@@ -31,13 +31,11 @@ jobs:
       
       #Build/pack the project
       - name: Setup .NET 1
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 1.x
-      - name: Setup .NET 10
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 10.x
+          dotnet-version: | 
+            10.x
+          global-json-file: global.json
       - name: Build and Pack NuGet package
         run: dotnet build src/Kuddle.Net/Kuddle.Net.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
       - name: Upload NuGet package to GitHub
