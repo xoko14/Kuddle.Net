@@ -8,11 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <!-- NuGet Package Properties -->
-    <Authors>jamesshenry</Authors>
-    <Company>jamesshenry</Company>
+    <Authors>jamesshenry, xoko14</Authors>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/jamesshenry/Kuddle.Net</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jamesshenry/Kuddle.Net</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/xoko14/Kuddle.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/xoko14/Kuddle.Net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
